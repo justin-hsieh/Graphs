@@ -37,22 +37,22 @@ class Graph:
         """
         # Create an empty queue
         queue = Queue()
-        # Put the starting point in that
+        # Put the starting point in the queue
         queue.enqueue(starting_vertex)
-        # Make a set to keep track of where we've been
+        # Make a set to keep track of vertices visited
         visited = set()
-        # While there is stuff in the queue/stack
+        # While the queue is not empty
         while queue.size() > 0:
-            #    Pop the first item
+            # Pop the first item
             vertex = queue.dequeue()
-        #    If not visited
+            # If the vertex has not been visited
             if vertex not in visited:
-                #       DO THE THING!
+                # print and add vertex to list of visited
                 print(vertex)
                 visited.add(vertex)
-        #       For each edge in the item
+                # For each edge in the item
                 for next_vert in self.get_neighbors(vertex):
-                    #           Add that edge to the queue/stack
+                    # Add the edge to the queue/stack
                     queue.enqueue(next_vert)
 
     def dft(self, starting_vertex):
@@ -62,22 +62,22 @@ class Graph:
         """
         # Create an empty stack
         stack = Stack()
-        # Put the starting point in that
+        # Put the starting point in the queue
         stack.push(starting_vertex)
-        # Make a set to keep track of where we've been
+        # Make a set to keep track of vertices visited
         visited = set()
-        # While there is stuff in the queue/stack
+        # While queue is not empty
         while stack.size() > 0:
-            #    Pop the first item
+            # Pop the first item
             vertex = stack.pop()
-        #    If not visited
+            # If vertex has not been visited
             if vertex not in visited:
-                #       DO THE THING!
+                # print and add vertex to list of visited
                 print(vertex)
                 visited.add(vertex)
-        #       For each edge in the item
+                # For each edge
                 for next_vert in self.get_neighbors(vertex):
-                    #           Add that edge to the queue/stack
+                    # Add that edge to the queue/stack
                     stack.push(next_vert)
 
     def dft_recursive(self, starting_vertex, visited=None):
@@ -108,15 +108,15 @@ class Graph:
         queue.enqueue([starting_vertex])
         # Make a set to keep track of where we've been
         visited = set()
-        # While there is stuff in the queue/stack
+        # While queue is not empty
         while queue.size() > 0:
-            #    Pop the first item
+            # Pop the first item
             path = queue.dequeue()
             vertex = path[-1]
-        #    If not visited
+            # If not visited
             if vertex not in visited:
+                # if a vertex matches the destination vertex
                 if vertex == destination_vertex:
-                    # Do the thing!
                     return path
                 visited.add(vertex)
         #       For each edge in the item
@@ -148,7 +148,6 @@ class Graph:
         #    If not visited
             if vertex not in visited:
                 if vertex == destination_vertex:
-                    # Do the thing!
                     return path
                 visited.add(vertex)
         #       For each edge in the item
@@ -166,7 +165,6 @@ class Graph:
         depth-first order.
         This should be done using recursion.
         """
-        # TODO
         if visited is None:
             visited = set()
         if path is None:
