@@ -44,8 +44,8 @@ def earliest_ancestor(ancestors, starting_node):
 
     # initiate stack
     stack = Stack()
-    # Put the starting point in the stack
-    stack.push([starting_node])
+    # Put the starting point in the stack 
+    stack.push([starting_node]) # q = [[1]]
     # Make a set to keep track of nodes visited
     visited = set()
     # Track the longest path
@@ -53,18 +53,18 @@ def earliest_ancestor(ancestors, starting_node):
     # While the stack is not empty
     while stack.size() > 0:
         # Pop the first item
-        path = stack.pop()
-        vertex = path[-1]
+        path = stack.pop() # [1]
+        vertex = path[-1] # 1
         # If vertex has not been visited
-        if vertex not in visited:
+        if vertex not in visited: # if 1 isn't visited
             # add the vertex to visited
-            visited.add(vertex)
+            visited.add(vertex) # {1: [1]}
             # For each edge in the item
-            for next_vert in ancestor_graph.get_neighbors(vertex):
+            for next_vert in ancestor_graph.get_neighbors(vertex): # next = 10
                 # Copy the path
-                new_path = list(path)
-                new_path.append(next_vert)
-                # Add that edge to the stack
+                new_path = list(path) # [1]
+                new_path.append(next_vert) # [1, 10]
+                # Add that path to the stack to update
                 stack.push(new_path)
                 # compare the path lengths and update
                 if len(new_path) > len(longest_path):
